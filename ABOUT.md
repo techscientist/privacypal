@@ -14,7 +14,7 @@ day where the interface between Research / Business / Finance disappears, contri
 global development.
 
 
-Federico Cismondi <img src="http://privacypal.fcismondi.koding.io/img/federicocismondi.png"/>
+</h2>Federico Cismondi</h2> <img src="http://privacypal.fcismondi.koding.io/img/federicocismondi.png"/>
 
 I think of myself as a “data-driven person”, somebody who likes to dig deeply into collected information
 and then look for the facts in order to make decisions based on them. Also, since the early stages of my
