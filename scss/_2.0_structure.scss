@@ -1,0 +1,804 @@
+body {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+svg {
+	max-width: 100%;
+	height: auto;
+}
+
+.loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(#FFF, .2);
+	z-index: $floating;
+	display: none;
+
+	.spinner {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background: $yellow;
+		border: 3px solid #000;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+		@include box-shadow(rgba(#000, .4) 0px 0px 10px);
+		@include animate(spinner-loading, 2s, infinite, linear, false);
+	}
+}
+
+.instructions {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($yellow, .2);
+	z-index: $floating;
+	display: none;
+
+	.box {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 600px;
+		max-width: 90%;
+		padding: 30px;
+		margin: 0 auto;
+		background: #FFF;
+		border-radius: $global-radius;
+		z-index: $floating;
+		@include transform(translate(-50%, -50%));
+		@include box-shadow(rgba(#000, .4) 0px 0px 10px);
+		text-align: center;
+
+		h5 {
+			font-family: "futura-pt";
+			font-weight: 700;
+			font-size: 1.2em;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+	}
+}
+
+.fullheight {
+	min-height: 600px;
+
+	.wrapper {
+		padding: 60px 0 70px 0;
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+	}
+
+	@media screen and (min-height: 600px) {
+		min-height: 0;
+	}
+}
+
+.question {
+	display: inline-block;
+	font-family: "futura-pt";
+	font-weight: 400;
+	font-size: 1.2em;
+	color: $teal;
+	border-radius: $global-radius;
+	border: 1px solid $teal;
+	padding: 4px 14px;
+	@include transition(all, .2s, ease-out);
+	cursor: pointer;
+
+	&:hover {
+		background: $teal;
+		color: #FFF;
+	}
+}
+
+.hero {
+	background: $light-teal;
+	padding: 50px 0 150px 0;
+	min-height: 600px;
+	position: relative;
+	overflow: hidden;
+	@include transition(all, 1s, ease-out);
+
+	@media screen and (min-height: 600px) {
+		min-height: 0;
+	}
+
+	&.loaded {
+		.background-flare {
+			background: rgba(#FFF, .15);
+			border-radius: 50%;
+			width: 500px;
+			height: 500px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include transform(translate(-50%, -50%));
+			@include transform-origin(left, top);
+			z-index: $background;
+			@include animate(enter-background-flare, 5s, 1, ease-out, false);
+		}
+
+		.background-flare-1 { @extend .background-flare; @include animate(enter-background-flare, 2.5s, 1, ease-out, false); }
+		.background-flare-2 { @extend .background-flare; @include animate(enter-background-flare, 2s, 1, ease-out, false); width: 800px; height: 800px; }
+		.background-flare-3 { @extend .background-flare; @include animate(enter-background-flare, 1.5s, 1, ease-out, false); width: 1100px; height: 1100px; }
+		.background-flare-4 { @extend .background-flare; @include animate(enter-background-flare, 1s, 1, ease-out, false); width: 1400px; height: 1400px; }
+	}
+ 	
+ 	header {
+ 		position: relative;
+ 		z-index: $floating;
+
+ 		.logo {
+ 			img {
+ 				width: 115px;
+ 				height: auto;
+
+	 			@media #{$medium-up} {
+	 				width: 230px;
+	 			}
+	 		}
+ 		}
+
+		.menu {
+			text-align: right;
+
+			ul {
+				list-style-type: none;
+
+				li {
+					display: inline-block;
+					color: $teal;
+
+					&.signup {
+						background: #FFF;
+						padding: 12px 18px;
+						font-weight: 700;
+						margin-left: 10px;
+						border-radius: $global-radius;
+						@include transition(all, .2s, ease-out);
+
+						&:hover {
+							background: $teal;
+							color: #FFF;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.search-box {
+		text-align: center;
+		position: absolute;
+		top: 30%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+		@include transition(all, 1s, ease-out);
+		z-index: $foreground;
+		@media #{$medium-up} { top: 40%; }
+		@media #{$small-only} and (min-height: 550px) { top: 40%; }
+		
+
+		.form {
+			position: absolute;
+			width: 100%;
+			top: 85%;
+			left: 0;
+			padding: 0 15px;
+			@include transform(translate(0, -50%));
+
+			.query {
+				border: 2px solid #000;
+				margin: 0 auto;
+				height: 60px;
+				line-height: 60px;
+				padding: 30px;
+				border-radius: 30px;
+				font-family: "futura-pt";
+				font-weight: 500;
+				font-size: 1.5em;
+			}
+			.enter {
+				position: absolute;
+				right: 80px;
+				top: 50%;
+				display: none;
+				color: $iron;
+				font-size: 0.8em;
+				@include transform(translate(-10px, -50%));
+				@include opacity(0);
+				@include transition(all, .4s, ease-out);
+	 			@media #{$medium-up} { display: block; }
+
+				span {
+					border: 1px solid $iron;
+					padding: 5px;
+					border-radius: $global-radius;
+				}
+
+				&.visible {
+					@include opacity(1);
+					@include transform(translate(0, -50%));
+				}
+			}
+			.submit {
+				position: absolute;
+				right: 23px;
+				top: 7px;
+				height: 50px;
+				width: 50px;
+				border-radius: 50%;
+				background: $teal;
+				color: #FFF;
+				font-family: "futura-pt";
+				font-weight: 700;
+				font-size: 1.5em;
+				border: 0;
+				cursor: pointer;
+				@include transition(all, .2s, ease-out);
+
+				&:hover {
+					background: $yellow;
+				}
+			}
+		}
+		.illustration {
+			@include transition(all, 1s, ease-out);
+		}
+
+		@media screen and (max-height: 730px) {
+			.illustration {
+				@include transform(translate(0, 50px) scale(.8));
+				@include transform-origin(center, top);
+			}
+			.form {
+				top: 70%;
+			}
+		}
+	}
+
+	.info {
+		position: absolute;
+		bottom: 60px;
+		left: 50%;
+		text-align: center;
+		@include transform(translate(-50%, 0));
+		@include transition(all, 1s, ease-out);
+
+		h2 {
+			font-family: "futura-pt";
+			font-weight: 700;
+			font-size: 1.2em;
+			color: $teal;
+			margin-bottom: 50px;
+			@media screen and (max-height: 730px) { margin-bottom: 30px; }
+		}
+
+		.why {
+			@extend .question;
+			@media #{$medium-up} { padding: 8px 16px; }
+		}
+	}
+
+	&.results {
+		height: 350px !important;
+		min-height: 350px;
+		padding-bottom: 300px;
+		@include transition(all, 1.5s, ease-in);
+
+		.search-box {
+			@include transform(translate(-50%, -250px));
+
+			@media #{$medium-up} { @include transform(translate(-50%, -400px)); }
+			@media #{$small-only} and (min-height: 550px) { @include transform(translate(-50%, -250px)); }
+			@media screen and (max-height: 730px) { @include transform(translate(-50%, -320px)); }
+
+			.form .enter {
+				@include transform(translate(-10px, -50%));
+				@include opacity(0);
+			}
+
+			.illustration {
+				@include transform(translate(0, -550px));
+				@include opacity(0);
+			}
+		}
+
+		.info {
+			@include transform(translate(-50%, 500px));
+			@include opacity(0);
+		}
+	}
+}
+
+.output {
+	display: none;
+	padding: 50px 0 0 0;
+	overflow: hidden;
+	@include transition(all, 1s, ease-in);
+
+	position: relative;
+	top: -160px;
+	margin-bottom: -100px;
+
+	.uprs {
+		font-family: "futura-pt";
+		font-weight: 700;
+		font-size: 1.4em;
+	}
+	#msgUpScore {
+		font-size: 1.2em;
+		margin-bottom: 40px;
+	}
+}
+
+.about {
+	background: $snow;
+	padding: 60px 0;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+
+	h1 {
+		font-family: "futura-pt";
+		font-weight: 700;
+		font-size: 1.2em;
+		line-height: 1.2;
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		color: $teal;
+
+		@media #{$medium-up} {
+			font-size: 1.8em;
+			line-height: 1.2;
+			max-width: 100%;
+		}
+	}
+	h2 {
+		font-weight: 400;
+		font-size: .8em;
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		color: $steel;
+
+		@media #{$medium-up} {
+			font-size: 1em;
+			max-width: 100%;
+		}
+	}
+	.so-what {
+		@extend .question;
+		@include opacity(0);
+		@include transform(translate(0, 20px));
+		margin: 20px 0;
+		@media #{$medium-up} { padding: 8px 16px; }
+	}
+
+	#tos-intro {
+		.background-shine-1 {
+			background: $white-smoke;
+			width: 2000px;
+			height: 4000px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include transform(translate(300px, -2000px) rotate(45deg));
+			z-index: $background;
+		}
+
+		h1, h2 {
+			@include opacity(0);
+			@include transition(all, 2s, ease-in);
+		}
+		svg {
+			@include opacity(0);
+			@include transform(translate(0px, 50px));
+			@include transition(all, 2s, ease-in);
+
+			g,
+			path,
+			line {
+				@include transition(all, 2s, ease-in);
+			}
+			#level2left { @include transform(translate(150px, 0px)); }
+			#level3left { @include transform(translate(250px, 0px)); }
+			#level2right { @include transform(translate(-150px, 0px)); }
+			#level3right { @include transform(translate(-250px, 0px)); }
+			#sign {
+				stroke-dasharray: 200;
+				stroke-dashoffset: 200;
+				@include transition(all, 2s, ease-in);
+			}
+			#glass { @include transform(translate(280px, 0px)); }
+			#error { @include transform(rotate(45deg) translate(-250px, 50px)); @include transform-origin(center, center); }
+		}
+		&.triggered {
+			h1 {
+				@include opacity(1);
+			}
+			svg {
+				@include opacity(1);
+				@include transform(translate(0px, 0px));
+			}
+		}
+		&.signed {
+			h1 { @include opacity(1); }
+			svg {
+				#sign {
+					stroke-dashoffset: 0;
+				}
+			}
+		}
+		&.open {
+			h2 { @include opacity(1); }
+			svg {
+				#level2left, #level3left,
+				#level2right, #level3right { @include transform(translate(0px, 0px)); }
+			}
+			#glass,
+			#error { @include transform(translate(0px, 0px)); }
+		}
+		&.finished {
+			.so-what {
+				@include opacity(1);
+				@include transform(translate(0px, 0px));
+			}
+		}
+	}
+}
+
+.problem {
+	background: $yellow;
+	min-height: 600px;
+	position: relative;
+	overflow: hidden;
+
+	h1 {
+		font-family: "futura-pt";
+		font-weight: 700;
+		font-size: 1.2em;
+		line-height: 1.2;
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 30px;
+		color: #FFF;
+
+		@media #{$medium-up} {
+			font-size: 1.8em;
+			line-height: 1.2;
+			max-width: 100%;
+		}
+	}
+	h2 {
+		font-weight: 400;
+		font-size: .8em;
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		color: #000;
+		line-height: 1.8;
+		@include transform(translate(0, 20px)); 
+		@include opacity(0); 
+		@include transition(all, 1s, ease-in);
+
+		@media #{$medium-up} {
+			font-size: 1em;
+			max-width: 100%;
+		}
+	}
+	.what-to-do {
+		@extend .question;
+		color: $oil;
+		border-color: $oil;
+		@include opacity(0);
+		@include transform(translate(0, 20px));
+		margin: 30px 0 0 0;
+
+		@media #{$medium-up} { padding: 8px 16px; }
+
+		&:hover {
+			background: $oil;
+		}
+	}
+
+	.icon {
+		@media #{$medium-up} {
+			position: absolute;
+			top: 60px;
+			left: 0;
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	svg {
+		@include opacity(0); 
+		@include transform(translate(20px, 0)); 
+		@include transition(all, 2s, ease-in);
+
+		#warning {
+			@include opacity(0); 
+			@include transform(translate(0, 20px)); 
+			@include transition(all, 1s, ease-in);
+		}
+
+		#id,
+		#file,
+		#pic {
+			@include transition(all, 1s, ease-in);
+			@include transform(translate(0, 0));
+		}
+	}
+
+	&.triggered {
+		svg {
+			@include transform(translate(0, 0));
+			@include opacity(1);
+		}
+	}
+	&.copied-pic {
+		svg {
+			#pic {
+				@include transform(translate(520px, -60px));
+			}
+			#warning {
+				@include transform(translate(0, 0));
+				@include opacity(1);
+			}
+		}
+	}
+	&.copied-file {
+		svg {
+			#file {
+				@include transform(translate(520px, -60px));
+			}
+		}
+	}
+	&.copied-id {
+		svg {
+			#id {
+				@include transform(translate(520px, -60px));
+			}
+		}
+	}
+	&.explanation {
+		h2 {
+			@include transform(translate(0, 0)); 
+			@include opacity(1); 
+		}
+	}
+	&.finished {
+		.what-to-do {
+			@include transform(translate(0, 0));
+			@include opacity(1); 
+			@media #{$small-only} {
+				position: relative;
+				left: 50%;
+				@include transform(translate(-50%, 0));
+			}
+		}
+	}
+}
+
+.analysis {
+	background: $ghost;
+	padding: 60px 0;
+	min-height: 600px;
+	position: relative;
+	overflow: hidden;
+
+	.background-flare {
+		background: rgba($silver, .2);
+		border-radius: 50%;
+		width: 500px;
+		height: 500px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+		@include transform-origin(left, top);
+		z-index: $background;
+	}
+
+	.background-flare-1 { @extend .background-flare; }
+	.background-flare-2 { @extend .background-flare; width: 800px; height: 800px; }
+	.background-flare-3 { @extend .background-flare; width: 1100px; height: 1100px; }
+	.background-flare-4 { @extend .background-flare; width: 1400px; height: 1400px; }
+
+	h1 {
+		font-family: "futura-pt";
+		font-weight: 700;
+		font-size: 1.2em;
+		line-height: 1.2;
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 30px;
+		color: $teal;
+		text-align: center;
+
+		@media #{$medium-up} {
+			font-size: 1.8em;
+			line-height: 1.2;
+			max-width: 100%;
+		}
+	}
+	h2 {
+		font-weight: 400;
+		font-size: .8em;
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		color: #000;
+		text-align: center;
+
+		@media #{$medium-up} {
+			font-size: 1em;
+			max-width: 100%;
+		}
+	}
+	.so-what {
+		@extend .question;
+		@include opacity(0);
+		@include transform(translate(0, 20px));
+		margin: 20px 0;
+		@media #{$medium-up} { padding: 8px 16px; }
+	}
+
+	.icon {
+		text-align: center;
+		position: relative;
+		z-index: $foreground;
+	}
+
+	svg {
+		@include opacity(0); 
+		@include transform(translate(0, 20px)); 
+		@include transition(all, 2s, ease-in);
+
+		#scanner {
+			@include transition(all, 10s, ease-in);
+			@include transform(translate(0px, 0px));
+		}
+		#led1,
+		#led2,
+		#led3,
+		#lock,
+		#badge,
+		#id {
+			@include opacity(0); 
+			@include transition(all, 0.5s, ease-in);
+		}
+	}
+	&.triggered {
+		svg {
+			@include opacity(1); 
+			@include transform(translate(0, 0)); 
+		}
+	}
+	&.scanning {
+		svg {
+			#scanner {
+				@include transition(all, 10s, ease-in);
+				@include transform(translate(0px, 276px));
+			}
+		}
+
+	}
+	&.progress1 {
+		svg {
+			#led1,
+			#badge {
+				@include opacity(1); 
+			}
+		}
+
+	}
+	&.progress2 {
+		svg {
+			#led2,
+			#lock {
+				@include opacity(1); 
+			}
+		}
+
+	}
+	&.progress3 {
+		svg {
+			#led3,
+			#id {
+				@include opacity(1); 
+			}
+		}
+
+	}
+}
+
+.description {
+	padding: 60px 0;
+
+	h1 {
+		font-family: "futura-pt";
+		font-weight: 700;
+		font-size: 1.2em;
+		line-height: 1.2;
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		color: $yellow;
+		text-align: center;
+
+		@media #{$medium-up} {
+			font-size: 1.8em;
+			line-height: 1.2;
+			max-width: 100%;
+		}
+	}
+	h2 {
+		font-weight: 400;
+		font-size: .8em;
+		max-width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		color: $steel;
+
+		@media #{$medium-up} {
+			font-size: 1em;
+			max-width: 100%;
+		}
+	}
+
+	.row {
+		margin: 50px auto;
+	}
+
+	.svg-icon {
+		width: 40%;
+		margin: 0;
+		padding: 0;
+		float: left;
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	.txt-description {
+		width: 60%;
+		margin: 15px 0 0 0;
+		padding: 0;
+		float: left;
+		font-family: "futura-pt";
+		font-weight: 700;
+	}
+}
+
+footer {
+	background: $jet;
+	padding: 60px 0;
+	min-height: 200px;
+	color: #FFF;
+
+	h5 {
+		font-family: "futura-pt";
+		font-size: 2em;
+		font-weight: 700;
+		color: #FFF;
+	}
+}

@@ -1,0 +1,9 @@
+@-webkit-keyframes spinner-loading {
+	0% { @include transform(rotate(0)); }
+	100% { @include transform(rotate(360deg)); }
+}
+
+@-webkit-keyframes enter-background-flare {
+	0% { @include transform(scale(0) translate(-50%, -50%)); }
+	100% { @include transform(scale(1) translate(-50%, -50%)); }
+}
