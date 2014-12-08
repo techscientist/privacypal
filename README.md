@@ -12,7 +12,15 @@ Terms of Service & Privacy Policies should be simple, clear and readable. In rea
  
 <h2>PrivacyPal Solution</h2>
  
-PrivacyPal empowers you with the means to intuitively and quickly be able to know what is it that a specific website requests in their Terms of Service & Privacy Policies. PrivacyPal reinterprets the Terms of Service & Privacy Policies and presents them in a graphical way to the user (using small thumbnails/icons). PrivacyPal analyzes Terms of Service & Privacy Policies with artificial intelligence to make transparent to you how the website you are uses your personal information in a very simple way: (i) is your data used only for the intended purposes? (ii) will your data be exchanged or sold to third parties? (iii) will be your data given to advertisers? (iv) how long is your data kept by the website? (v) is your data provided to law enforcement only when legal processes are ongoing? (vi) is your personal data retained in a unencrypted or encrypted form?
+PrivacyPal empowers you with the means to intuitively and quickly be able to know what is it that a specific website requests in their Terms of Service & Privacy Policies. PrivacyPal reinterprets the Terms of Service & Privacy Policies and presents them in a graphical way to the user (using small thumbnails/icons). PrivacyPal analyzes Terms of Service & Privacy Policies with artificial intelligence to make transparent to you how the website you are uses your personal information in a very simple way:
+<ol>
+ <li>is your data used only for the intended purposes?</li>
+ <li>will your data be exchanged or sold to third parties?</li>
+ <li>will be your data given to advertisers?</li>
+ <li>how long is your data kept by the website?</li>
+ <li>is your data provided to law enforcement only when legal processes are ongoing?</li>
+ <li>is your personal data retained in a unencrypted or encrypted form?</li>
+</ol>
 By answering this questions, PrivacyPal offers you visual warning regarding the website you are in, making something that before was occult and time consuming into something transparent and a matter of seconds. In order to simplify, these icons can also be combined into a safety (unified) score that will incorporate all them on a scale of 1 to 10. It should also be noted that you can define a set of “go” or “no go” zones in terms of privacy in which you want to be alerted, but you can also define a set of hybrid rules that goes to the crowd to extract the main policy profiles accepted from websites in a specific area and combine them with your personal set of rules.
  
  
