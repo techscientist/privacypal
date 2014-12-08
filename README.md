@@ -80,4 +80,4 @@ Federico builds the backend that makes sure that our products are meaningful. Ed
 <h2>Contact Us</h2>
 
 Feel free to contact us by email privacypal.us@gmail.com
-And follow us on twitter @PrivacyPal2014
+And follow us on twitter <a href='https://twitter.com/PrivacyPal2014'>@PrivacyPal2014</a>
